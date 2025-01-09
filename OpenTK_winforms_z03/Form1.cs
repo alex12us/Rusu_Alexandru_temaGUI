@@ -539,7 +539,7 @@ namespace OpenTK_winforms_z02 {
                 //Dezactivează utilizarea iluminării.
                 GL.Disable(EnableCap.Lighting);
             }
-
+           
             //Se creeaza sursa de iluminare. In acest caz folosim o singura sursa.
             //Numarul de surse de lumini depinde de implementarea OpenGL, dar de obicei cel putin 8 surse sunt posibile simultan.
             GL.Light(LightName.Light0, LightParameter.Ambient, valuesAmbient0);
@@ -587,16 +587,34 @@ namespace OpenTK_winforms_z02 {
             }
 
             if (statusCubeTex1 == true) {
+               
+                //Aplicarea efectului de transparenta
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.DepthMask(false);
                 DeseneazaCubQ_Tex1();
+                GL.DepthMask(true);
+                GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex2 == true) {
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 DeseneazaCubQ_Tex2();
+               GL.Disable(EnableCap.Blend);//Dezactivez dupa cub fara sa afectez axele
             }
             if (statusCubeTex3 == true) {
+              
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 DeseneazaCubT_Tex3();
+                GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex4 == true) {
+                
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 DeseneazaCubT_Tex4();
+                GL.Disable(EnableCap.Blend);
             }
 
             //Limitează viteza de randare pentru a nu supraîncarca unitatea GPU (în caz contrar randarea se face cât de rapid este posibil, pe 100% din resurse). 
@@ -782,7 +800,7 @@ namespace OpenTK_winforms_z02 {
 
             switch (colorTex) {
                 case 0:
-                    GL.Color3(Color.White);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
+                    GL.Color4(1.0f, 1.0f, 1.0f, 0.5f);     //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
                     GL.Color3(Color.FromArgb(0, 255, 0, 0));
@@ -817,8 +835,8 @@ namespace OpenTK_winforms_z02 {
             }
 
             switch (colorTex) {
-                case 0:
-                    GL.Color3(Color.White);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
+                case 0:;
+                    GL.Color4(1.0f,1.0f,1.0f,0.5f);     //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
                     GL.Color3(Color.FromArgb(0, 255, 0, 0));
@@ -831,6 +849,7 @@ namespace OpenTK_winforms_z02 {
             //GL.Normal3(0.0, 0.0, 1.0);
             GL.Begin(PrimitiveType.Quads);
             for (int i = 0; i < nQuadsList; i = i + 4) {
+             
                 GL.TexCoord2(0.0, 0.5);
                 GL.Vertex3(arrVertex[arrQuadsList[i], 0], arrVertex[arrQuadsList[i], 1], arrVertex[arrQuadsList[i], 2]);
                 GL.TexCoord2(0.5, 0.5);
@@ -853,7 +872,7 @@ namespace OpenTK_winforms_z02 {
 
             switch (colorTex) {
                 case 0:
-                    GL.Color3(Color.White);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
+                    GL.Color4(1.0f, 1.0f, 1.0f, 0.5f);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
                     GL.Color3(Color.FromArgb(0, 255, 0, 0));
@@ -896,7 +915,7 @@ namespace OpenTK_winforms_z02 {
 
             switch (colorTex) {
                 case 0:
-                    GL.Color3(Color.White);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
+                    GL.Color4(1.0f, 1.0f, 1.0f, 0.5f);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
                     GL.Color3(Color.FromArgb(0, 255, 0, 0));

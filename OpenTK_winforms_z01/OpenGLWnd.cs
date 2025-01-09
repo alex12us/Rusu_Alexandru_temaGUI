@@ -280,7 +280,7 @@ namespace OpenTK_winforms_z01 {
             private void DrawObject1()
         {
             GL.Begin(PrimitiveType.Quads);
-            GL.Color3(25, 46, 1);
+            GL.Color3(Color.Crimson);
             GL.Vertex3(-10, 5, 10);
             GL.Vertex3(-10, 5, -10);
             GL.Vertex3(20, 5, -10);
