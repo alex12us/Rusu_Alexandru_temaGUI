@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK_winforms_z03;
 
 namespace OpenTK_winforms_z02 {
     public partial class Form1 : Form {
@@ -73,7 +74,7 @@ namespace OpenTK_winforms_z02 {
         private float[] valuesSpecular0 = new float[4];
         private float[] valuesPosition0 = new float[4];
 
-
+        private Randomizer rando;
         //-----------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------
         //   ON_LOAD
@@ -117,6 +118,7 @@ namespace OpenTK_winforms_z02 {
             statusCubeTex4 = false;
             brick = true;
             colorTex = 0;
+            rando = new Randomizer();
         }
 
         private void SetupWindowGUI() {
@@ -590,7 +592,7 @@ namespace OpenTK_winforms_z02 {
                
                 //Aplicarea efectului de transparenta
                 GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 GL.DepthMask(false);
                 DeseneazaCubQ_Tex1();
                 GL.DepthMask(true);
@@ -598,21 +600,21 @@ namespace OpenTK_winforms_z02 {
             }
             if (statusCubeTex2 == true) {
                 GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 DeseneazaCubQ_Tex2();
                GL.Disable(EnableCap.Blend);//Dezactivez dupa cub fara sa afectez axele
             }
             if (statusCubeTex3 == true) {
               
                 GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 DeseneazaCubT_Tex3();
                 GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex4 == true) {
                 
                 GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+                GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 DeseneazaCubT_Tex4();
                 GL.Disable(EnableCap.Blend);
             }
@@ -787,6 +789,12 @@ namespace OpenTK_winforms_z02 {
             statusCubeTex2 = false;
             statusCubeTex3 = false;
             statusCubeTex4 = false;
+            GlControl1.Invalidate();
+        }
+
+        private void btn_Background_Color_Click(object sender, EventArgs e)
+        {
+            GL.ClearColor(rando.GetRandomColor());
             GlControl1.Invalidate();
         }
 

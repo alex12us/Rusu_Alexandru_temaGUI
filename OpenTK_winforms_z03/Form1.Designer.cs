@@ -88,6 +88,7 @@ namespace OpenTK_winforms_z02 {
             this.btnTexT_1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btn_Background_Color = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericXeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericZeye)).BeginInit();
@@ -140,7 +141,7 @@ namespace OpenTK_winforms_z02 {
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(927, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 17);
+            this.label4.Size = new System.Drawing.Size(80, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "ViewDepthX";
             // 
@@ -180,7 +181,7 @@ namespace OpenTK_winforms_z02 {
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(1047, 47);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 17);
+            this.label5.Size = new System.Drawing.Size(81, 16);
             this.label5.TabIndex = 13;
             this.label5.Text = "ViewDepthY";
             // 
@@ -189,7 +190,7 @@ namespace OpenTK_winforms_z02 {
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(1171, 47);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 17);
+            this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "ViewDepthZ";
             // 
@@ -237,7 +238,7 @@ namespace OpenTK_winforms_z02 {
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(914, 109);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 17);
+            this.label7.Size = new System.Drawing.Size(95, 16);
             this.label7.TabIndex = 18;
             this.label7.Text = "Camera depth:";
             // 
@@ -335,7 +336,7 @@ namespace OpenTK_winforms_z02 {
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(914, 412);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(178, 17);
+            this.label8.Size = new System.Drawing.Size(165, 16);
             this.label8.TabIndex = 28;
             this.label8.Text = "Manipulare pozitie sursă 0:";
             // 
@@ -386,7 +387,7 @@ namespace OpenTK_winforms_z02 {
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1121, 412);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(184, 17);
+            this.label9.Size = new System.Drawing.Size(171, 16);
             this.label9.TabIndex = 32;
             this.label9.Text = "Manipulare culoare sursă 0:";
             // 
@@ -395,7 +396,7 @@ namespace OpenTK_winforms_z02 {
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(1121, 462);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 17);
+            this.label10.Size = new System.Drawing.Size(36, 16);
             this.label10.TabIndex = 33;
             this.label10.Text = "RED";
             // 
@@ -404,7 +405,7 @@ namespace OpenTK_winforms_z02 {
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(1121, 490);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 17);
+            this.label11.Size = new System.Drawing.Size(55, 16);
             this.label11.TabIndex = 34;
             this.label11.Text = "GREEN";
             // 
@@ -413,7 +414,7 @@ namespace OpenTK_winforms_z02 {
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(1121, 518);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 17);
+            this.label12.Size = new System.Drawing.Size(42, 16);
             this.label12.TabIndex = 35;
             this.label12.Text = "BLUE";
             // 
@@ -422,7 +423,7 @@ namespace OpenTK_winforms_z02 {
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(1121, 433);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(148, 17);
+            this.label13.Size = new System.Drawing.Size(139, 16);
             this.label13.TabIndex = 36;
             this.label13.Text = "(iluminare ambientală)";
             // 
@@ -545,7 +546,7 @@ namespace OpenTK_winforms_z02 {
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(1121, 562);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(117, 17);
+            this.label14.Size = new System.Drawing.Size(107, 16);
             this.label14.TabIndex = 44;
             this.label14.Text = "(iluminare difuză)";
             // 
@@ -554,7 +555,7 @@ namespace OpenTK_winforms_z02 {
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(1121, 647);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 17);
+            this.label15.Size = new System.Drawing.Size(42, 16);
             this.label15.TabIndex = 43;
             this.label15.Text = "BLUE";
             // 
@@ -563,7 +564,7 @@ namespace OpenTK_winforms_z02 {
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(1121, 619);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 17);
+            this.label16.Size = new System.Drawing.Size(55, 16);
             this.label16.TabIndex = 42;
             this.label16.Text = "GREEN";
             // 
@@ -572,7 +573,7 @@ namespace OpenTK_winforms_z02 {
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(1121, 591);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 17);
+            this.label17.Size = new System.Drawing.Size(36, 16);
             this.label17.TabIndex = 41;
             this.label17.Text = "RED";
             // 
@@ -581,7 +582,7 @@ namespace OpenTK_winforms_z02 {
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(1121, 541);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(184, 17);
+            this.label18.Size = new System.Drawing.Size(171, 16);
             this.label18.TabIndex = 40;
             this.label18.Text = "Manipulare culoare sursă 0:";
             // 
@@ -647,7 +648,7 @@ namespace OpenTK_winforms_z02 {
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(1121, 691);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(141, 17);
+            this.label19.Size = new System.Drawing.Size(132, 16);
             this.label19.TabIndex = 52;
             this.label19.Text = "(iluminare speculară)";
             // 
@@ -656,7 +657,7 @@ namespace OpenTK_winforms_z02 {
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(1121, 776);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 17);
+            this.label20.Size = new System.Drawing.Size(42, 16);
             this.label20.TabIndex = 51;
             this.label20.Text = "BLUE";
             // 
@@ -665,7 +666,7 @@ namespace OpenTK_winforms_z02 {
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(1121, 748);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 17);
+            this.label21.Size = new System.Drawing.Size(55, 16);
             this.label21.TabIndex = 50;
             this.label21.Text = "GREEN";
             // 
@@ -674,7 +675,7 @@ namespace OpenTK_winforms_z02 {
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(1121, 720);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(37, 17);
+            this.label22.Size = new System.Drawing.Size(36, 16);
             this.label22.TabIndex = 49;
             this.label22.Text = "RED";
             // 
@@ -683,7 +684,7 @@ namespace OpenTK_winforms_z02 {
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(1121, 670);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(184, 17);
+            this.label23.Size = new System.Drawing.Size(171, 16);
             this.label23.TabIndex = 48;
             this.label23.Text = "Manipulare culoare sursă 0:";
             // 
@@ -743,7 +744,7 @@ namespace OpenTK_winforms_z02 {
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(7, 49);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 21);
+            this.radioButton2.Size = new System.Drawing.Size(107, 20);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.Text = "Logo (alpha!)";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -755,7 +756,7 @@ namespace OpenTK_winforms_z02 {
             this.rbTexture0.Checked = true;
             this.rbTexture0.Location = new System.Drawing.Point(7, 22);
             this.rbTexture0.Name = "rbTexture0";
-            this.rbTexture0.Size = new System.Drawing.Size(64, 21);
+            this.rbTexture0.Size = new System.Drawing.Size(65, 20);
             this.rbTexture0.TabIndex = 0;
             this.rbTexture0.TabStop = true;
             this.rbTexture0.Text = "Bricks";
@@ -779,7 +780,7 @@ namespace OpenTK_winforms_z02 {
             this.rbColorBlue.AutoSize = true;
             this.rbColorBlue.Location = new System.Drawing.Point(7, 79);
             this.rbColorBlue.Name = "rbColorBlue";
-            this.rbColorBlue.Size = new System.Drawing.Size(54, 21);
+            this.rbColorBlue.Size = new System.Drawing.Size(55, 20);
             this.rbColorBlue.TabIndex = 2;
             this.rbColorBlue.Text = "Blue";
             this.rbColorBlue.UseVisualStyleBackColor = true;
@@ -790,7 +791,7 @@ namespace OpenTK_winforms_z02 {
             this.rbColorRed.AutoSize = true;
             this.rbColorRed.Location = new System.Drawing.Point(7, 49);
             this.rbColorRed.Name = "rbColorRed";
-            this.rbColorRed.Size = new System.Drawing.Size(52, 21);
+            this.rbColorRed.Size = new System.Drawing.Size(54, 20);
             this.rbColorRed.TabIndex = 1;
             this.rbColorRed.Text = "Red";
             this.rbColorRed.UseVisualStyleBackColor = true;
@@ -802,7 +803,7 @@ namespace OpenTK_winforms_z02 {
             this.rbColorWhite.Checked = true;
             this.rbColorWhite.Location = new System.Drawing.Point(7, 22);
             this.rbColorWhite.Name = "rbColorWhite";
-            this.rbColorWhite.Size = new System.Drawing.Size(62, 21);
+            this.rbColorWhite.Size = new System.Drawing.Size(62, 20);
             this.rbColorWhite.TabIndex = 0;
             this.rbColorWhite.TabStop = true;
             this.rbColorWhite.Text = "White";
@@ -859,11 +860,22 @@ namespace OpenTK_winforms_z02 {
             this.pictureBox2.TabIndex = 66;
             this.pictureBox2.TabStop = false;
             // 
+            // btn_Background_Color
+            // 
+            this.btn_Background_Color.Location = new System.Drawing.Point(1343, 341);
+            this.btn_Background_Color.Name = "btn_Background_Color";
+            this.btn_Background_Color.Size = new System.Drawing.Size(124, 47);
+            this.btn_Background_Color.TabIndex = 67;
+            this.btn_Background_Color.Text = "Change Background";
+            this.btn_Background_Color.UseVisualStyleBackColor = true;
+            this.btn_Background_Color.Click += new System.EventHandler(this.btn_Background_Color_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1710, 802);
+            this.Controls.Add(this.btn_Background_Color);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnReset_Tex2);
@@ -1021,6 +1033,7 @@ namespace OpenTK_winforms_z02 {
         private System.Windows.Forms.Button btnTexT_1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btn_Background_Color;
     }
 }
 
