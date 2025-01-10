@@ -64,15 +64,22 @@ namespace OpenTK_winforms_z02 {
         private float[] valuesSpecularTemplate0 = new float[] { 0.1f, 0.1f, 0.1f, 1.0f };
         private float[] valuesPositionTemplate0 = new float[] { 0.0f, 0.0f, 5.0f, 1.0f };
         //# SET 2
-        //private float[] valuesAmbientTemplate0 = new float[] { 0.2f, 0.2f, 0.2f, 1.0f };
-        //private float[] valuesDiffuseTemplate0 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
-        //private float[] valuesSpecularTemplate0 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
-        //private float[] valuesPositionTemplate0 = new float[] { 1.0f, 1.0f, 1.0f, 0.0f };
+        //private float[] valuesAmbientTemplate1 = new float[] { 0.2f, 0.2f, 0.2f, 1.0f };
+        //private float[] valuesDiffuseTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
+        //private float[] valuesSpecularTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
+        //private float[] valuesPositionTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 0.0f };
 
         private float[] valuesAmbient0 = new float[4];
         private float[] valuesDiffuse0 = new float[4];
         private float[] valuesSpecular0 = new float[4];
         private float[] valuesPosition0 = new float[4];
+
+
+        private float rotation_X = 0.0f;
+        private float rotation_Y = 0.0f;
+        private float position_X = 0.0f;
+        private float position_Y = 0.0f;
+        private float position_Z = 0.0f;
 
         private Randomizer rando;
         //-----------------------------------------------------------------------------------------
@@ -87,7 +94,8 @@ namespace OpenTK_winforms_z02 {
             /// Acest mod de inițializare va activa antialiasing-ul (multisampling MSAA la 8x).
             /// ATENTȚIE!
             /// Veți pierde designerul grafic. Aplicația funcționează dar pentru a putea accesa designerul grafic va trebui să reveniți la constructorul
-            /// implicit al controlului OpenTK!
+            /// implicit al controlului OpenTK
+            this.KeyPreview = true;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -218,7 +226,53 @@ namespace OpenTK_winforms_z02 {
             }
 
         }
+        private void GL_Control_Keyboard(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                rotation_X -= 1.0f;  
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                rotation_X += 1.0f;  
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                rotation_Y += 1.0f;  
+            }
+            else if (e.KeyCode == Keys.Down)
+            { 
+                rotation_Y -= 1.0f;  
+            }
+            else if (e.KeyCode == Keys.A)
+            {
+                position_X -= 1.0f;
 
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                position_X += 1.0f;
+            }
+            else if (e.KeyCode == Keys.W)
+            {
+                position_Y += 1.0f;  
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                position_Y -= 1.0f;  
+            }
+            else if (e.KeyCode == Keys.E)
+            {
+                position_Z += 1.0f;  
+            }
+            else if (e.KeyCode == Keys.E)
+            {
+                position_Z -= 1.0f;
+            }
+
+            GlControl1.Invalidate();  // Forțează re-desenarea 
+
+        }
         //-----------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------
         //   CONTROL CAMERĂ
@@ -594,8 +648,15 @@ namespace OpenTK_winforms_z02 {
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 GL.DepthMask(false);
+
+                     GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
+                GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
+                GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
                 DeseneazaCubQ_Tex1();
                 GL.DepthMask(true);
+                 
+                GL.PopMatrix();
                 GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex2 == true) {
@@ -623,6 +684,7 @@ namespace OpenTK_winforms_z02 {
             //Dezavantajul este că o viteză prea mică poate afecta negativ cursivitatea animației!
             //GraphicsContext.CurrentContext.SwapInterval = 1;                                         //Testati cu valori din 10 in 10!!!
             //GraphicsContext.CurrentContext.VSync = True
+            DeseneazaCub();
 
             GlControl1.SwapBuffers();
         }
@@ -955,7 +1017,74 @@ namespace OpenTK_winforms_z02 {
             }
             GL.End();
         }
-        
+        private void DeseneazaCub()
+        {  //1
+         
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.GreenYellow);
+            GL.Vertex3(-10, 10, 10);
+            GL.Vertex3(-10, 10, -10);
+            GL.Vertex3(10, 10, -10);
+            GL.Vertex3(10, 10, 10);
+            GL.End();
+
+            // 2
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.Green);
+            GL.Vertex3(-10, -10, 10);
+            GL.Vertex3(10, -10, 10);
+            GL.Vertex3(10, -10, -10);
+            GL.Vertex3(-10, -10, -10);
+            GL.End();
+
+            // Draw the front face
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.GreenYellow);
+            GL.Vertex3(-10, 10, 10);
+            GL.Vertex3(10, 10, 10);
+            GL.Vertex3(10, -10, 10);
+            GL.Vertex3(-10, -10, 10);
+            GL.End();
+
+            // Draw the back face
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.Yellow);
+            GL.Vertex3(-10, 10, -10);
+            GL.Vertex3(-10, -10, -10);
+            GL.Vertex3(10, -10, -10);
+            GL.Vertex3(10, 10, -10);
+            GL.End();
+
+            // Draw the left face
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.GreenYellow);
+            GL.Vertex3(-10, 10, 10);
+            GL.Vertex3(-10, 10, -10);
+            GL.Vertex3(-10, -10, -10);
+            GL.Vertex3(-10, -10, 10);
+            GL.End();
+
+            // Draw the right face
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.GreenYellow);
+            GL.Vertex3(10, 10, 10);
+            GL.Vertex3(10, -10, 10);
+            GL.Vertex3(10, -10, -10);
+            GL.Vertex3(10, 10, -10);
+            GL.End();
+
+
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
+            GL.Enable(EnableCap.Blend);
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color4(255, 1, 0, 0.5);
+            GL.Vertex3(-50, 25, 50);
+            GL.Vertex3(-50, 25, -50);
+            GL.Vertex3(100, 25, -50);
+            GL.Vertex3(100, 25, 50);
+            GL.End();
+            GL.Disable(EnableCap.Blend);
+        }
         
     }
 }

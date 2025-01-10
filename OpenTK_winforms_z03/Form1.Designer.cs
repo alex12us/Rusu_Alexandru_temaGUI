@@ -121,6 +121,7 @@ namespace OpenTK_winforms_z02 {
             this.GlControl1.TabIndex = 0;
             this.GlControl1.VSync = false;
             this.GlControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.GlControl1_Paint);
+            this.GlControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GL_Control_Keyboard);
             this.GlControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GlControl1_MouseDown);
             this.GlControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GlControl1_MouseMove);
             this.GlControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GlControl1_MouseUp);
