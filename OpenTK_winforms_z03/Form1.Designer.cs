@@ -92,6 +92,7 @@ namespace OpenTK_winforms_z02 {
             this.btnCub_1 = new System.Windows.Forms.Button();
             this.btn_quadtransparent = new System.Windows.Forms.Button();
             this.btnLight1 = new System.Windows.Forms.Button();
+            this.rbColorTuqoise = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericXeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericZeye)).BeginInit();
@@ -769,12 +770,13 @@ namespace OpenTK_winforms_z02 {
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rbColorTuqoise);
             this.groupBox2.Controls.Add(this.rbColorBlue);
             this.groupBox2.Controls.Add(this.rbColorRed);
             this.groupBox2.Controls.Add(this.rbColorWhite);
             this.groupBox2.Location = new System.Drawing.Point(1542, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(156, 109);
+            this.groupBox2.Size = new System.Drawing.Size(156, 134);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Color";
@@ -782,7 +784,7 @@ namespace OpenTK_winforms_z02 {
             // rbColorBlue
             // 
             this.rbColorBlue.AutoSize = true;
-            this.rbColorBlue.Location = new System.Drawing.Point(7, 79);
+            this.rbColorBlue.Location = new System.Drawing.Point(7, 76);
             this.rbColorBlue.Name = "rbColorBlue";
             this.rbColorBlue.Size = new System.Drawing.Size(55, 20);
             this.rbColorBlue.TabIndex = 2;
@@ -816,7 +818,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btnReset_Tex2
             // 
-            this.btnReset_Tex2.Location = new System.Drawing.Point(1625, 236);
+            this.btnReset_Tex2.Location = new System.Drawing.Point(1625, 258);
             this.btnReset_Tex2.Name = "btnReset_Tex2";
             this.btnReset_Tex2.Size = new System.Drawing.Size(73, 80);
             this.btnReset_Tex2.TabIndex = 64;
@@ -826,7 +828,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btnTexT_2
             // 
-            this.btnTexT_2.Location = new System.Drawing.Point(1336, 284);
+            this.btnTexT_2.Location = new System.Drawing.Point(1328, 306);
             this.btnTexT_2.Name = "btnTexT_2";
             this.btnTexT_2.Size = new System.Drawing.Size(283, 32);
             this.btnTexT_2.TabIndex = 63;
@@ -836,7 +838,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btnTexT_1
             // 
-            this.btnTexT_1.Location = new System.Drawing.Point(1336, 236);
+            this.btnTexT_1.Location = new System.Drawing.Point(1328, 260);
             this.btnTexT_1.Name = "btnTexT_1";
             this.btnTexT_1.Size = new System.Drawing.Size(283, 32);
             this.btnTexT_1.TabIndex = 62;
@@ -866,7 +868,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btn_Background_Color
             // 
-            this.btn_Background_Color.Location = new System.Drawing.Point(1343, 341);
+            this.btn_Background_Color.Location = new System.Drawing.Point(1336, 358);
             this.btn_Background_Color.Name = "btn_Background_Color";
             this.btn_Background_Color.Size = new System.Drawing.Size(124, 47);
             this.btn_Background_Color.TabIndex = 67;
@@ -876,7 +878,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btnCub_1
             // 
-            this.btnCub_1.Location = new System.Drawing.Point(1489, 341);
+            this.btnCub_1.Location = new System.Drawing.Point(1489, 357);
             this.btnCub_1.Name = "btnCub_1";
             this.btnCub_1.Size = new System.Drawing.Size(75, 23);
             this.btnCub_1.TabIndex = 68;
@@ -886,7 +888,7 @@ namespace OpenTK_winforms_z02 {
             // 
             // btn_quadtransparent
             // 
-            this.btn_quadtransparent.Location = new System.Drawing.Point(1489, 370);
+            this.btn_quadtransparent.Location = new System.Drawing.Point(1489, 386);
             this.btn_quadtransparent.Name = "btn_quadtransparent";
             this.btn_quadtransparent.Size = new System.Drawing.Size(75, 23);
             this.btn_quadtransparent.TabIndex = 69;
@@ -896,12 +898,24 @@ namespace OpenTK_winforms_z02 {
             // 
             // btnLight1
             // 
-            this.btnLight1.Location = new System.Drawing.Point(1343, 402);
+            this.btnLight1.Location = new System.Drawing.Point(1343, 423);
             this.btnLight1.Name = "btnLight1";
             this.btnLight1.Size = new System.Drawing.Size(112, 37);
             this.btnLight1.TabIndex = 70;
             this.btnLight1.UseVisualStyleBackColor = true;
             this.btnLight1.Click += new System.EventHandler(this.btnLight1_Click);
+            // 
+            // rbColorTuqoise
+            // 
+            this.rbColorTuqoise.AutoSize = true;
+            this.rbColorTuqoise.Location = new System.Drawing.Point(7, 98);
+            this.rbColorTuqoise.Name = "rbColorTuqoise";
+            this.rbColorTuqoise.Size = new System.Drawing.Size(89, 20);
+            this.rbColorTuqoise.TabIndex = 3;
+            this.rbColorTuqoise.TabStop = true;
+            this.rbColorTuqoise.Text = "Turquoise";
+            this.rbColorTuqoise.UseVisualStyleBackColor = true;
+            this.rbColorTuqoise.CheckedChanged += new System.EventHandler(this.rbColorTuqoise_CheckedChanged);
             // 
             // Form1
             // 
@@ -1073,6 +1087,7 @@ namespace OpenTK_winforms_z02 {
         private System.Windows.Forms.Button btnCub_1;
         private System.Windows.Forms.Button btn_quadtransparent;
         private System.Windows.Forms.Button btnLight1;
+        private System.Windows.Forms.RadioButton rbColorTuqoise;
     }
 }
 

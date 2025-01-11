@@ -886,7 +886,10 @@ namespace OpenTK_winforms_z02 {
         private void rbColorBlue_CheckedChanged(object sender, EventArgs e) {
             colorTex = 2;
         }
-
+        private void rbColorTuqoise_CheckedChanged(object sender, EventArgs e)
+        {
+            colorTex = 3;
+        }
         //Încărcare cub triunghiuri.
         private void btnTexT_1_Click(object sender, EventArgs e) {
             resetTexCubes();
@@ -976,6 +979,9 @@ namespace OpenTK_winforms_z02 {
                 case 2:
                     GL.Color3(Color.FromArgb(0, 0, 0, 255));
                     break;
+                case 3:
+                    GL.Color3(Color.Turquoise);
+                    break;
             }
 
             //GL.Normal3(0.0, 0.0, 1.0);
@@ -1012,6 +1018,9 @@ namespace OpenTK_winforms_z02 {
                 case 2:
                     GL.Color3(Color.FromArgb(0, 0, 0, 255));
                     break;
+               case 3:
+                    GL.Color3(Color.Turquoise);
+                    break;
             }
 
             //GL.Normal3(0.0, 0.0, 1.0);
@@ -1030,7 +1039,9 @@ namespace OpenTK_winforms_z02 {
             GL.End();
         }
 
-    
+       
+
+
 
 
         //Desenează cubul - triangles - textura 1 - 100%.
@@ -1050,6 +1061,9 @@ namespace OpenTK_winforms_z02 {
                     break;
                 case 2:
                     GL.Color3(Color.FromArgb(0, 0, 0, 255));
+                    break;
+                case 3:
+                    GL.Color3(Color.Turquoise);
                     break;
             }
 
@@ -1093,6 +1107,9 @@ namespace OpenTK_winforms_z02 {
                     break;
                 case 2:
                     GL.Color3(Color.FromArgb(0, 0, 0, 255));
+                    break;
+                case 3:
+                    GL.Color3(Color.Turquoise);
                     break;
             }
 
