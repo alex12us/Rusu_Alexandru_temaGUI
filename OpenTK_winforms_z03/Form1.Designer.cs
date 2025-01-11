@@ -89,6 +89,9 @@ namespace OpenTK_winforms_z02 {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_Background_Color = new System.Windows.Forms.Button();
+            this.btnCub_1 = new System.Windows.Forms.Button();
+            this.btn_quadtransparent = new System.Windows.Forms.Button();
+            this.btnLight1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericXeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYeye)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericZeye)).BeginInit();
@@ -871,11 +874,43 @@ namespace OpenTK_winforms_z02 {
             this.btn_Background_Color.UseVisualStyleBackColor = true;
             this.btn_Background_Color.Click += new System.EventHandler(this.btn_Background_Color_Click);
             // 
+            // btnCub_1
+            // 
+            this.btnCub_1.Location = new System.Drawing.Point(1489, 341);
+            this.btnCub_1.Name = "btnCub_1";
+            this.btnCub_1.Size = new System.Drawing.Size(75, 23);
+            this.btnCub_1.TabIndex = 68;
+            this.btnCub_1.Text = "Cub1";
+            this.btnCub_1.UseVisualStyleBackColor = true;
+            this.btnCub_1.Click += new System.EventHandler(this.btnCub_1_Click);
+            // 
+            // btn_quadtransparent
+            // 
+            this.btn_quadtransparent.Location = new System.Drawing.Point(1489, 370);
+            this.btn_quadtransparent.Name = "btn_quadtransparent";
+            this.btn_quadtransparent.Size = new System.Drawing.Size(75, 23);
+            this.btn_quadtransparent.TabIndex = 69;
+            this.btn_quadtransparent.Text = "obj_alpha";
+            this.btn_quadtransparent.UseVisualStyleBackColor = true;
+            this.btn_quadtransparent.Click += new System.EventHandler(this.btn_quadtransparent_Click);
+            // 
+            // btnLight1
+            // 
+            this.btnLight1.Location = new System.Drawing.Point(1343, 402);
+            this.btnLight1.Name = "btnLight1";
+            this.btnLight1.Size = new System.Drawing.Size(112, 37);
+            this.btnLight1.TabIndex = 70;
+            this.btnLight1.UseVisualStyleBackColor = true;
+            this.btnLight1.Click += new System.EventHandler(this.btnLight1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1710, 802);
+            this.Controls.Add(this.btnLight1);
+            this.Controls.Add(this.btn_quadtransparent);
+            this.Controls.Add(this.btnCub_1);
             this.Controls.Add(this.btn_Background_Color);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -1035,6 +1070,9 @@ namespace OpenTK_winforms_z02 {
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btn_Background_Color;
+        private System.Windows.Forms.Button btnCub_1;
+        private System.Windows.Forms.Button btn_quadtransparent;
+        private System.Windows.Forms.Button btnLight1;
     }
 }
 

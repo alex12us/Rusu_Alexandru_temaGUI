@@ -25,7 +25,7 @@ namespace OpenTK_winforms_z02 {
         //Stări de control iluminare.
         private bool lightON;
         private bool lightON_0;
-
+        private bool lightON_1;
         //Stări de control obiecte 3D.
         private string statusCube;
 
@@ -41,6 +41,8 @@ namespace OpenTK_winforms_z02 {
         private bool statusCubeTex3;
         private bool statusCubeTex4;
 
+        private bool statusCubeCreate;
+        private bool statusDreptumghi;
         //Structuri de stocare a vertexurilor și a listelor de vertexuri.
         private int[,] arrVertex = new int[50, 3];         //Stocam matricea de vertexuri; 3 coloane vor reține informația pentru X, Y, Z. Nr. de linii definește nr. de vertexuri.
         private int nVertex;
@@ -64,10 +66,10 @@ namespace OpenTK_winforms_z02 {
         private float[] valuesSpecularTemplate0 = new float[] { 0.1f, 0.1f, 0.1f, 1.0f };
         private float[] valuesPositionTemplate0 = new float[] { 0.0f, 0.0f, 5.0f, 1.0f };
         //# SET 2
-        //private float[] valuesAmbientTemplate1 = new float[] { 0.2f, 0.2f, 0.2f, 1.0f };
-        //private float[] valuesDiffuseTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
-        //private float[] valuesSpecularTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
-        //private float[] valuesPositionTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 0.0f };
+        private float[] valuesAmbientTemplate1 = new float[] { 0.2f, 0.2f, 0.2f, 1.0f };
+        private float[] valuesDiffuseTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
+        private float[] valuesSpecularTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
+        private float[] valuesPositionTemplate1 = new float[] { 1.0f, 1.0f, 1.0f, 0.0f };
 
         private float[] valuesAmbient0 = new float[4];
         private float[] valuesDiffuse0 = new float[4];
@@ -95,13 +97,16 @@ namespace OpenTK_winforms_z02 {
             /// ATENTȚIE!
             /// Veți pierde designerul grafic. Aplicația funcționează dar pentru a putea accesa designerul grafic va trebui să reveniți la constructorul
             /// implicit al controlului OpenTK
-            this.KeyPreview = true;
+          
         }
 
         private void Form1_Load(object sender, EventArgs e) {
 
             SetupValues();
             SetupWindowGUI();
+            this.KeyPreview = true;
+            GlControl1.KeyUp += GL_Control_Keyboard;
+            GlControl1.Focus();
         }
 
         //-----------------------------------------------------------------------------------------
@@ -124,6 +129,8 @@ namespace OpenTK_winforms_z02 {
             statusCubeTex2 = false;
             statusCubeTex3 = false;
             statusCubeTex4 = false;
+            statusCubeCreate = false;
+            statusDreptumghi = false;
             brick = true;
             colorTex = 0;
             rando = new Randomizer();
@@ -141,11 +148,14 @@ namespace OpenTK_winforms_z02 {
             setCubeStatus("OFF");
             setIlluminationStatus(false);
             setSource0Status(false);
+            setSource1Status(false);
 
             setTrackLigh0Default();
             setColorAmbientLigh0Default();
             setColorDifuseLigh0Default();
             setColorSpecularLigh0Default();
+
+        
         }
 
 
@@ -228,48 +238,47 @@ namespace OpenTK_winforms_z02 {
         }
         private void GL_Control_Keyboard(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.NumPad1)
             {
                 rotation_X -= 1.0f;  
             }
-            else if (e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.NumPad2)
             {
                 rotation_X += 1.0f;  
             }
-            else if (e.KeyCode == Keys.Up)
+            if (e.KeyCode== Keys.NumPad3)
             {
                 rotation_Y += 1.0f;  
             }
-            else if (e.KeyCode == Keys.Down)
+             if (e.KeyCode == Keys.NumPad4)
             { 
                 rotation_Y -= 1.0f;  
             }
-            else if (e.KeyCode == Keys.A)
+            if (e.KeyCode == Keys.A)
             {
                 position_X -= 1.0f;
 
             }
-            else if (e.KeyCode == Keys.D)
+            if (e.KeyCode == Keys.D)
             {
                 position_X += 1.0f;
             }
-            else if (e.KeyCode == Keys.W)
+            if (e.KeyCode == Keys.W)
             {
                 position_Y += 1.0f;  
             }
-            else if (e.KeyCode == Keys.S)
+            if (e.KeyCode == Keys.S)
             {
                 position_Y -= 1.0f;  
             }
-            else if (e.KeyCode == Keys.E)
+            if (e.KeyCode == Keys.E)
             {
                 position_Z += 1.0f;  
             }
-            else if (e.KeyCode == Keys.E)
+            if (e.KeyCode == Keys.Q)
             {
                 position_Z -= 1.0f;
             }
-
             GlControl1.Invalidate();  // Forțează re-desenarea 
 
         }
@@ -379,6 +388,7 @@ namespace OpenTK_winforms_z02 {
             }
             GlControl1.Invalidate();
         }
+       
 
         //Identifică numărul maxim de lumini pentru implementarea curentă a OpenGL.
         private void btnLightsNo_Click(object sender, EventArgs e) {
@@ -408,7 +418,36 @@ namespace OpenTK_winforms_z02 {
                 GlControl1.Invalidate();
             }
         }
+        private void setSource1Status(bool status)
+        {
+            if (status == false)
+            {
+                lightON_1 = false;
+                btnLight1.Text = "Sursa 1 OFF";
+            }
+            else
+            {
+                lightON_1 = true;
+                btnLight1.Text = "Sursa 1 ON";
+            }
 
+        }
+        private void btnLight1_Click(object sender, EventArgs e)
+        {
+            if (lightON == true)
+            {
+                if (lightON_1 == false)
+                {
+                    setSource1Status(true);
+                }
+                else
+                {
+                    setSource1Status(false);
+                }
+                GlControl1.Invalidate();
+
+            }
+        }
         //Schimbăm poziția sursei 0 de iluminare după axele XYZ.
         private void setTrackLigh0Default() {
             trackLight0PositionX.Value = (int)valuesPosition0[0];
@@ -611,6 +650,20 @@ namespace OpenTK_winforms_z02 {
                 GL.Disable(EnableCap.Light0);
             }
 
+            GL.Light(LightName.Light1, LightParameter.Ambient, valuesAmbientTemplate1);
+            GL.Light(LightName.Light1, LightParameter.Diffuse, valuesDiffuseTemplate1);
+            GL.Light(LightName.Light1, LightParameter.Specular, valuesSpecularTemplate1);
+            GL.Light(LightName.Light1, LightParameter.Position, valuesPositionTemplate1);
+            if ((lightON == true) && (lightON_1 == true))
+            {
+                //Activam sursa 1 de lumina. 
+                GL.Enable(EnableCap.Light1);
+            }
+            else
+            {
+                //Dezactivam sursa 1 de lumina.
+                GL.Disable(EnableCap.Light1);
+            }
             //Controlul rotației cu mouse-ul (2D).
             if (statusControlMouse2D == true) {
                 GL.Rotate(mousePos.X, 0, 1, 0);
@@ -639,7 +692,10 @@ namespace OpenTK_winforms_z02 {
             if (statusCube.ToUpper().Equals("QUADS")) {
                 DeseneazaCubQ();
             } else if (statusCube.ToUpper().Equals("TRIANGLES")) {
+                GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
                 DeseneazaCubT();
+                GL.PopMatrix();
             }
 
             if (statusCubeTex1 == true) {
@@ -648,35 +704,48 @@ namespace OpenTK_winforms_z02 {
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
                 GL.DepthMask(false);
-
-                     GL.PushMatrix();
+                GL.PushMatrix();
                 GL.Translate(position_X, position_Y, position_Z);
                 GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
                 GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
                 DeseneazaCubQ_Tex1();
                 GL.DepthMask(true);
-                 
-                GL.PopMatrix();
+                 GL.PopMatrix();
+            
                 GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex2 == true) {
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
+                GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
+                GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
+                GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
+          
+              
                 DeseneazaCubQ_Tex2();
-               GL.Disable(EnableCap.Blend);//Dezactivez dupa cub fara sa afectez axele
+                GL.PopMatrix();
+                GL.Disable(EnableCap.Blend);//Dezactivez dupa cub fara sa afectez axele
             }
             if (statusCubeTex3 == true) {
               
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
+                GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
+                GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
+                GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
                 DeseneazaCubT_Tex3();
+                GL.PopMatrix();
                 GL.Disable(EnableCap.Blend);
             }
             if (statusCubeTex4 == true) {
                 
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
+                
                 DeseneazaCubT_Tex4();
+                GL.PopMatrix();
                 GL.Disable(EnableCap.Blend);
             }
 
@@ -684,7 +753,19 @@ namespace OpenTK_winforms_z02 {
             //Dezavantajul este că o viteză prea mică poate afecta negativ cursivitatea animației!
             //GraphicsContext.CurrentContext.SwapInterval = 1;                                         //Testati cu valori din 10 in 10!!!
             //GraphicsContext.CurrentContext.VSync = True
-            DeseneazaCub();
+            if (statusCubeCreate == true)
+            {
+                GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
+                GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
+                GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
+                DeseneazaCub();
+                GL.PopMatrix();
+            }
+            if (statusDreptumghi == true)
+            {
+                DreptunghiDraw();
+            }
 
             GlControl1.SwapBuffers();
         }
@@ -840,7 +921,19 @@ namespace OpenTK_winforms_z02 {
             statusCubeTex2 = true;
             GlControl1.Invalidate();
         }
+        private void btnCub_1_Click(object sender, EventArgs e)
+        {
+            statusCubeCreate = true;
+            GlControl1.Invalidate();
 
+        }
+
+        private void btn_quadtransparent_Click(object sender, EventArgs e)
+        {
+             statusDreptumghi = true;
+            GlControl1.Invalidate();
+
+        }
         private void btnReset_Tex1_Click(object sender, EventArgs e) {
             resetTexCubes();
         }
@@ -851,6 +944,8 @@ namespace OpenTK_winforms_z02 {
             statusCubeTex2 = false;
             statusCubeTex3 = false;
             statusCubeTex4 = false;
+            statusCubeCreate = false;
+            statusDreptumghi = false;
             GlControl1.Invalidate();
         }
 
@@ -931,6 +1026,9 @@ namespace OpenTK_winforms_z02 {
             }
             GL.End();
         }
+
+    
+
 
         //Desenează cubul - triangles - textura 1 - 100%.
         private void DeseneazaCubT_Tex3() {
@@ -1072,8 +1170,10 @@ namespace OpenTK_winforms_z02 {
             GL.Vertex3(10, -10, -10);
             GL.Vertex3(10, 10, -10);
             GL.End();
-
-
+           
+        }
+        private void DreptunghiDraw()
+        {
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
             GL.Enable(EnableCap.Blend);
             GL.Begin(PrimitiveType.Quads);
@@ -1085,6 +1185,5 @@ namespace OpenTK_winforms_z02 {
             GL.End();
             GL.Disable(EnableCap.Blend);
         }
-        
     }
 }
