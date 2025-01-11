@@ -625,7 +625,7 @@ namespace OpenTK_winforms_z02 {
             GL.Viewport(0, 0, GlControl1.Width, GlControl1.Height);                                         //Mărimea suprafeței randate (scena 3D este proiectată pe aceasta).
             GL.Enable(EnableCap.DepthTest);                                                                 //Corecții de adâncime.
             GL.DepthFunc(DepthFunction.Less);                                                               //Corecții de adâncime.
-
+           
             //Pornim iluminarea (daca avem permisiunea să o facem).
             if (lightON == true) {
                 //Permite utilizarea iluminării. Fara aceasta corecție iluminarea nu functioneaza.
@@ -743,7 +743,10 @@ namespace OpenTK_winforms_z02 {
                 
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.One);
-                
+                GL.PushMatrix();
+                GL.Translate(position_X, position_Y, position_Z);
+                GL.Rotate(rotation_X, 1.0f, 0.0f, 0.0f);
+                GL.Rotate(rotation_Y, 0.0f, 1.0f, 0.0f);
                 DeseneazaCubT_Tex4();
                 GL.PopMatrix();
                 GL.Disable(EnableCap.Blend);
@@ -1040,7 +1043,7 @@ namespace OpenTK_winforms_z02 {
 
             switch (colorTex) {
                 case 0:
-                    GL.Color4(1.0f, 1.0f, 1.0f, 0.5f);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
+                    GL.Color3(Color.White);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
                     GL.Color3(Color.FromArgb(0, 255, 0, 0));
@@ -1086,7 +1089,7 @@ namespace OpenTK_winforms_z02 {
                     GL.Color4(1.0f, 1.0f, 1.0f, 0.5f);      //Culoarea albă permite maparea texturii fără alterarea culorii originale.
                     break;
                 case 1:
-                    GL.Color3(Color.FromArgb(0, 255, 0, 0));
+                    GL.Color4(1.0f,0.0f,0.0f,1.0f);
                     break;
                 case 2:
                     GL.Color3(Color.FromArgb(0, 0, 0, 255));
