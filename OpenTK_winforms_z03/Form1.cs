@@ -1135,7 +1135,7 @@ namespace OpenTK_winforms_z02 {
             GL.Vertex3(-10, -10, -10);
             GL.End();
 
-            // Draw the front face
+            // 3
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.GreenYellow);
             GL.Vertex3(-10, 10, 10);
@@ -1144,7 +1144,7 @@ namespace OpenTK_winforms_z02 {
             GL.Vertex3(-10, -10, 10);
             GL.End();
 
-            // Draw the back face
+            // 4
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.Yellow);
             GL.Vertex3(-10, 10, -10);
@@ -1153,7 +1153,7 @@ namespace OpenTK_winforms_z02 {
             GL.Vertex3(10, 10, -10);
             GL.End();
 
-            // Draw the left face
+            // 5
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.GreenYellow);
             GL.Vertex3(-10, 10, 10);
@@ -1162,7 +1162,7 @@ namespace OpenTK_winforms_z02 {
             GL.Vertex3(-10, -10, 10);
             GL.End();
 
-            // Draw the right face
+            // 6
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.GreenYellow);
             GL.Vertex3(10, 10, 10);
