@@ -432,6 +432,8 @@ namespace OpenTK_winforms_z02 {
             }
 
         }
+        
+        //am aduagat inca o sursa de lumina
         private void btnLight1_Click(object sender, EventArgs e)
         {
             if (lightON == true)
